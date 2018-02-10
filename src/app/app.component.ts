@@ -10,17 +10,14 @@ import {Observable  } from "rxjs/Observable";
 })
 export class AppComponent {
   users: Observable<any[]>;
+  title = 'hola';
 
   constructor( private myDataBase: AngularFireDatabase){
     this.users = myDataBase.list('users').valueChanges();
     console.log(this.users);
   }
 
-  @HostListener('window:keyup') onKeyUp() {
-    console.log("keyup detected");
-  }
-
-  @HostListener('window:keydown') newColor() {
+  @HostListener('window:keyup', [$event]) onKeyUp() {
     console.log("keyup detected");
   }
 
